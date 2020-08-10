@@ -1,31 +1,43 @@
 <template>
+    <div>
+        <div class="container-sm"></div>
+        <div class="container-md">
 
-
-
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="row">dwaawd</div>
-                <div class="row">dwaawd</div>
-                <div class="row">dwaawd</div>
-                <div class="row">dwaawd</div>
-
-
+            <div class="row">
+                <div class="col-6">col</div>
+                <div class="col-6">col</div>
+                <div class="col-6">col</div>
+                <div class="w-100">ccc</div>
+                <!-- <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div>
+                <div class="col">col</div> -->
+                <div class="col">col</div>
+                <div class="col">col</div>
             </div>
-            <div class="col-sm-6">
-                <div class="row">12123123</div>
-                <div class="row">123123123</div>
-                <div class="row">4324324</div>
-                <div class="row">45645645</div>
-            </div>
-
         </div>
-    </div> -->
 
 
+        <!-- <div class="container-xl">100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide u100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide u100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide u100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide u100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide u100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide u100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide u100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide u100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide u100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide u large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint100% wide until extra large breakpoint</div> -->
 
-
-    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
                 <div class="row" style="background-color:lavender>dwaawddw">dwadawdwa </div>
