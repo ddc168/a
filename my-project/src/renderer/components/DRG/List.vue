@@ -1,5 +1,5 @@
 <template>
     <div>
-        详情
+        分组测试表单
     </div>
 </template>

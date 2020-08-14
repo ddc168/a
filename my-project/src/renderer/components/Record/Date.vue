@@ -1,5 +1,5 @@
 <template>
     <div>
-        详情
+        诊断日志
     </div>
 </template>

@@ -1,16 +1,16 @@
 <template>
 <!-- 字典 -->
-<div class="container-fiuled " style="width:2800px">
-<div class="row ">
-<div class="col=2"><version></version> </div>      
-<div class="col=10">
-  <adrg></adrg>
-  <drg></drg>
-  <mdc></mdc>
-  <detail></detail>
-</div>
-</div>
-</div>
+  <div class="row ">
+    <div class="col-2">
+      <version></version> 
+    </div>      
+    <div class="col-10">
+      <adrg></adrg>
+      <drg></drg>
+      <mdc></mdc>
+      <detail></detail>
+    </div>
+  </div>
 </template>
 
 <script>

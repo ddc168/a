@@ -1,5 +1,5 @@
 <template>
     <div>
-        详情
+        其他诊断
     </div>
 </template>

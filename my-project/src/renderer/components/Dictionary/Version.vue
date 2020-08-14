@@ -1,5 +1,5 @@
 <template>
     <div>
-        Version
+        版本列表
     </div>
 </template>

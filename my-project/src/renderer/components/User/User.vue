@@ -1,5 +1,5 @@
 <template>
     <div>
-        详情
+        用户信息
     </div>
 </template>

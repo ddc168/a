@@ -1,5 +1,5 @@
 <template>
     <div>
-        详情
+        规则表查询
     </div>
 </template>

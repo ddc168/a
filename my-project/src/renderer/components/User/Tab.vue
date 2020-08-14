@@ -1,5 +1,5 @@
 <template>
     <div>
-        详情
+        标签页
     </div>
 </template>

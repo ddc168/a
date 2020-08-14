@@ -1,5 +1,5 @@
 <template>
     <div>
-        详情
+        发帖表单
     </div>
 </template>

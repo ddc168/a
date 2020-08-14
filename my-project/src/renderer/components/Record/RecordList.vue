@@ -1,5 +1,5 @@
 <template>
     <div>
-        详情
+        病案库列表
     </div>
 </template>
