@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/components/Landing').default
     },
     {
+      path: '/bj',
+      name: 'landing',
+      component: require('@/components/LandingPage').default
+    },
+    {
       path: '*',
       redirect: '/'
     }

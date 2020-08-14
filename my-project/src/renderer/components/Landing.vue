@@ -2,75 +2,49 @@
     <div class="container-fiuled">
         <div class="container-fiuled">
             <div class="row justify-content-start">
-                <div class="col-4">
-                    One 1
-                </div>
-                <div class="col-4">
-                    One 2
+                <div class="row">
+                    <div class="col-2">
+                        <p>
+                            <img src="/statics/images/course/smiley.gif" alt="图片未找到" width="32" height="32"></p>
+                    </div>
+                    <div class="col-1 ">
+                        <button class=btn-block @click="open('sy')">首页</button>
+                    </div>
+                    <div class="col-1">
+                        <button class=btn-block @click="open('zd')">字典</button>
+                    </div>
+                    <div class="col-1">
+                        <button class=btn-block @click="open('ba')">病案</button>
+                    </div>
+                    <div class="col-1">
+                        <button class=btn-block @click="open('drg')">DR G</button>
+                    </div>
+                    <div class="col-2">
+                        <button class=btn-block @click="open('gx')">共享病案分析</button>
+                    </div>
+                    <div class="col-2">
+                        <button class=btn-block @click="open('bj')">BJ病案分析</button>
+                    </div>
+                    <div class="col-1">
+                        <button class=btn-block @click="open('lt')">论坛</button>
+                    </div>
+                    <div class="col-1">
+                        <button class=btn-block @click="open('yh')">用户</button>
+                    </div>
                 </div>
 
-                <div class="col-4">
-                    One 3
-                </div>
-                <div class="col-4">
-                    One 4
-                </div>
-            </div>
-            <div class="row justify-content-end">
-                <div class="col-4">
-                    One 5
-                </div>
-                <div class="col-4">
-                    One 6
-                </div>
-            </div>
-            <div class="row justify-content-around">
-                <div class="col-4">
-                    One 7
-                </div>
-                <div class="col-4">
-                    One 8
-                </div>
-            </div>
-            <div class="row justify-content-between">
-                <div class="col-4">
-                    One 9
-                </div>
-                <div class="col-4">
-                    One 10
-                </div>
-            </div>
-        </div>
-
-        
-        <div class="container-fiuled">
-            <div class="row ">
-                <div class="col-6">col</div>
-                <div class="col-6">col</div>
-                <div class="col-6">col</div>
-                <div class="w-100">ccc</div>
-                <div class="col">col</div>
-                <div class="col">col</div>
-            </div>
-        </div>
-
-
-
-        <div class="container-fiuled">
-            <div class="row  row-cols-2">
-                <div class="col-sm-6">
-                    <div class="row" style="background-color:lavender>dwaawddw">1 </div>
-                    <div class="row" style="background-color:lavender>dwaawd"> 2</div>
-                    <div class="row" style="background-color:lavender>dwaawd">3 </div>
-                    <div class="row" style="background-color:lavender>dwaawd"> 4</div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="row" style="background-color:lavender>dwaawd">5</div>
-                    <div class="row" style="background-color:lavender>dwaawd">6</div>
-                    <div class="row" style="background-color:lavender>dwaawd">7</div>
-                    <div class="row" style="background-color:lavender>dwaawd">8</div>
-                </div>
             </div>
         </div>
     </div>
 </template>
+
+//  <script>
+//   export default {
+//     name: 'landing',
+//     methods: {
+//       open (link) {
+//         this.$electron.shell.open(link)
+//       }
+//     }
+//   }
+// </script>
