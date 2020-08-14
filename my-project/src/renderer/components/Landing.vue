@@ -38,13 +38,13 @@
     </div>
 </template>
 
-//  <script>
-//   export default {
-//     name: 'landing',
-//     methods: {
-//       open (link) {
-//         this.$electron.shell.open(link)
-//       }
-//     }
-//   }
-// </script>
+<script>
+  export default {
+    name: 'landing',
+    methods: {
+      open (link) {
+        this.$router.push(link)
+      }
+    }
+  }
+</script>
