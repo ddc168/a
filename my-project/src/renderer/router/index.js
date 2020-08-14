@@ -7,13 +7,33 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'landing',
-      component: require('@/components/Landing').default
+      name: 'home',
+      component: require('@/components/Home').default
     },
     {
-      path: '/bj',
-      name: 'landing',
-      component: require('@/components/LandingPage').default
+      path: '/drg',
+      name: 'drg',
+      component: require('@/components/DRG').default
+    },
+    {
+      path: '/ba',
+      name: 'record',
+      component: require('@/components/Record').default
+    },
+    {
+      path: '/lt',
+      name: 'forum',
+      component: require('@/components/Forum').default
+    },
+    {
+      path: '/yh',
+      name: 'user',
+      component: require('@/components/User').default
+    },
+    {
+      path: '/zd',
+      name: 'dictionary',
+      component: require('@/components/Dictionary').default
     },
     {
       path: '*',

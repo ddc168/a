@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import Landing from './Landing'
+  import Landing from './F'
 
   export default {
     name: 'landing-page',
