@@ -20,6 +20,7 @@ new Vue({
   template: '<App/>'
 }).$mount('#app')
 console.log($)
+
 const MongoClient = require('mongodb').MongoClient
 const url = 'mongodb://localhost:27017/meteor'
 MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
@@ -33,7 +34,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
       } else {
         console.log(result)
       }
+      db.close()
     })
-    db.close()
   }
 })

@@ -12,6 +12,7 @@ export default {
   components: { Landing },
   created: function () {
     console.log('a is: ' + this)
+    this.$store.commit('Loading')
   }
 }
 </script>

@@ -36,6 +36,11 @@ export default new Router({
       component: require('@/components/Dictionary').default
     },
     {
+      path: '/PageNews',
+      name: 'PageNews',
+      component: require('@/components/News').default
+    },
+    {
       path: '*',
       redirect: '/'
     }
