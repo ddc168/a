@@ -31,8 +31,8 @@ export function getNews (obj) {
           console.log(result)
           obj.$store.commit('Loading', result)
         }
+        db.close()
       })
-      db.close()
     }
   })
 }

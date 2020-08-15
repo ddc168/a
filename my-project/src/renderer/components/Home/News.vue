@@ -2,7 +2,7 @@
     <!-- 动态 -->
   <div>
     <ul id="example-1" >
-      <li  v-for="(a, index) in News" @click="open('PageNews')" :key="index" >
+      <li  v-for="(a, index) in News" :key="index" @click="open(index)">
         {{ a.id }} - {{ a.title }}
       </li>
     </ul>
@@ -18,8 +18,9 @@ export default {
     }
   },
   methods: {
-    open (link) {
-      this.$router.push(link)
+    open (index) {
+      this.$router.push('PageNews')
+      this.$store.commit('NewOne', index)
       // getNews(this)
     }
   }

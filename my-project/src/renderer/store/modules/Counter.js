@@ -2,7 +2,8 @@
 // const url = 'mongodb://localhost:27017/meteor'
 const state = {
   main: 0,
-  News: []
+  News: [],
+  NewOne: {}
 }
 
 const mutations = {
@@ -18,6 +19,9 @@ const mutations = {
     //   { message: '1', title: '2' },
     //   { message: '3', title: '4' }
     // ]
+  },
+  NewOne (state, index) {
+    state.NewOne = state.News[index]
   }
 }
 
@@ -26,6 +30,7 @@ const actions = {
     // do something async
     commit('INCREMENT_MAIN_COUNTER')
     commit('Loading')
+    commit('NewOne')
   }
 }
 
