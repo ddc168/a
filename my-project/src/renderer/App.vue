@@ -9,7 +9,10 @@
 import Landing from './components/Navigation'
 export default {
   name: 'my-project',
-  components: { Landing }
+  components: { Landing },
+  created: function () {
+    console.log('a is: ' + this)
+  }
 }
 </script>
 
