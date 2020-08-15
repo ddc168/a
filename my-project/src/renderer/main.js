@@ -20,10 +20,20 @@ new Vue({
   template: '<App/>'
 }).$mount('#app')
 console.log($)
-// var MongoClient = require('mongodb').MongoClient
-// var url = 'mongodb://localhost:27017/runoob'
-// MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
-//   if (err) throw err
-//   console.log("数据库已创建!")
-//   db.close()
-// })
+const MongoClient = require('mongodb').MongoClient
+const url = 'mongodb://localhost:27017/meteor'
+MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('数据库已创建!')
+    db.db('meteor').collection('page').find().toArray((err, result) => {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(result)
+      }
+    })
+    db.close()
+  }
+})
