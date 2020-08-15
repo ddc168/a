@@ -12,12 +12,12 @@ const mutations = {
   INCREMENT_MAIN_COUNTER (state) {
     state.main++
   },
-  Loading (state) {
-    state.News =
-    [
-      { message: '1', title: '2' },
-      { message: '3', title: '4' }
-    ]
+  Loading (state, result) {
+    state.News = result
+    // [
+    //   { message: '1', title: '2' },
+    //   { message: '3', title: '4' }
+    // ]
   }
 }
 

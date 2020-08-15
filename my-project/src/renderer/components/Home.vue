@@ -15,8 +15,8 @@
 </template>
 <script>
   import news from './Home/News'
-import app from './Home/App'
-import user from './Home/User'
+  import app from './Home/App'
+  import user from './Home/User'
 
   export default {
     name: 'landing-page',
@@ -25,10 +25,10 @@ import user from './Home/User'
       // open (link) {
       //   this.$electron.shell.openExternal(link)
       // },
-      a (link) {
-        console.log(this.$store.state.Counter.main)
-        this.$store.commit('INCREMENT_MAIN_COUNTER')
-      }
+      // a (link) {
+      //   console.log(this.$store.state.Counter.main)
+      //   this.$store.commit('INCREMENT_MAIN_COUNTER')
+      // }
     }
   }
 </script>
