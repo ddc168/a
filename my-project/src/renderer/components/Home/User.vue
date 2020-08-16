@@ -11,16 +11,17 @@
         <input type="text" class="form-control" v-model="password" placeholder="请输入密码">
       </div>
     </form>
-    <button @click="open()">
+    <button @click="open('LogIn')">
       登录
     </button>
-    <button @click="open()">
+    <button @click="open('SignIn')">
       注册
     </button>
   </div>
 </template>
 
 <script>
+import {LogIn, SignIn} from '../../mongo'
 export default {
   data () {
     return {
@@ -30,9 +31,11 @@ export default {
   },
   methods: {
     open (index) {
-      this.$store.commit('LogIn', this.name, this.password)
-      this.$store.commit('SignIn', this.name, this.password)
-      // getNews(this)
+      if (index === 'LogIn') {
+        LogIn(this, {name: this.name, password: this.password})
+      } else {
+        SignIn(this, {name: this.name, password: this.password})
+      }
     }
   }
 }

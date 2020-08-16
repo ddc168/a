@@ -1,9 +1,11 @@
 // const MongoClient = require('mongodb').MongoClient
+
 // const url = 'mongodb://localhost:27017/meteor'
 const state = {
   main: 0,
   News: [],
-  NewOne: {}
+  NewOne: {},
+  user: false
 }
 
 const mutations = {
@@ -22,6 +24,18 @@ const mutations = {
   },
   NewOne (state, index) {
     state.NewOne = state.News[index]
+  },
+  LogIn (state, name) {
+    console.log(name)
+    if (name[0]) {
+      state.user = true
+    } else { window.alert('用户不存在') }
+  },
+  SignIn (state, name) {
+    console.log(name)
+  },
+  change (state) {
+    state.user = true
   }
 }
 
@@ -31,6 +45,8 @@ const actions = {
     commit('INCREMENT_MAIN_COUNTER')
     commit('Loading')
     commit('NewOne')
+    commit('LogIn')
+    commit('SignIn')
   }
 }
 
