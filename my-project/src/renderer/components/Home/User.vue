@@ -1,7 +1,7 @@
 <template>
   <!-- 用户 -->
   <div>
-    <div v-if="!user.type">
+    <div v-if="user.name === ''">
       <form role="form">
         <div class="form-group">
           <label for="name">名称</label>
@@ -19,13 +19,13 @@
         注册
       </button>
     </div>
-    <div v-if="user.type">
+    <div v-else>
       <div class='row'>用户名：{{user.name}}</div>
       <div class='row'>密码：{{user.password}}</div>
+      <button @click='UserOut()'>
+        退出
+      </button>
     </div> 
-    <button @click='UserOut()'>
-      退出
-    </button>
   </div>
 </template>
 
@@ -43,7 +43,6 @@ export default {
     open (index) {
       if (index === 'LogIn') {
         LogIn(this, {name: this.name, password: this.password})
-        // this.user.type = true
       } else {
         SignIn(this, {name: this.name, password: this.password})
       }

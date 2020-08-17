@@ -12,8 +12,6 @@ export default {
   name: 'my-project',
   components: { Landing },
   created: function () {
-    console.log('a is: ' + this)
-    // this.$store.commit('Loading')
     getNews(this)
   }
 }
