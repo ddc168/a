@@ -68,7 +68,7 @@ export function SignIn (obj, user) {
           if (result[0]) {
             window.alert('用户已存在')
           } else {
-            db.db('meteor').collection('page').insertOne(user)
+            db.db('meteor').collection('user').insertOne(user)
           }
           // console.log(result)
           // obj.$store.commit('Loading', result)
