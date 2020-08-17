@@ -5,7 +5,7 @@ const state = {
   main: 0,
   News: [],
   NewOne: {},
-  user: {type: false}
+  user: {type: false, name: '', password: ''}
 }
 
 const mutations = {
@@ -25,17 +25,22 @@ const mutations = {
   NewOne (state, index) {
     state.NewOne = state.News[index]
   },
-  LogIn (state, name) {
-    console.log(name)
-    if (name[0]) {
+  LogIn (state, user) {
+    console.log(user)
+    if (user[0]) {
+      state.user = user
       state.user.type = true
     } else { window.alert('用户不存在') }
+    console.log(state.user)
   },
   SignIn (state, name) {
     console.log(name)
   },
   change (state) {
     state.user.type = true
+  },
+  UserOut (state) {
+    state.user.type = false
   }
 }
 
@@ -47,6 +52,7 @@ const actions = {
     commit('NewOne')
     commit('LogIn')
     commit('SignIn')
+    commit('UserOut')
   }
 }
 

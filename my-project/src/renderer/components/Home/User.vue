@@ -19,9 +19,13 @@
         注册
       </button>
     </div>
+    <div v-if="user.type">
+      <div class='row'>用户名：{{user.name}}</div>
+      <div class='row'>密码：{{user.password}}</div>
+    </div> 
     <button @click='UserOut()'>
-        退出
-      </button>
+      退出
+    </button>
   </div>
 </template>
 
@@ -39,12 +43,13 @@ export default {
     open (index) {
       if (index === 'LogIn') {
         LogIn(this, {name: this.name, password: this.password})
+        // this.user.type = true
       } else {
         SignIn(this, {name: this.name, password: this.password})
       }
     },
     UserOut () {
-      this.user.type = false
+      this.$store.commit('UserOut')
     }
   }
 }
