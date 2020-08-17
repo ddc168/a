@@ -1,6 +1,7 @@
 <template>
   <!-- 用户 -->
   <div>
+    {{user}}
     <div v-if="user.name === ''">
       <form role="form">
         <div class="form-group">
