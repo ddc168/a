@@ -23,12 +23,11 @@ export function getNews (obj) {
     if (err) {
       console.log(err)
     } else {
-      console.log('数据库---已创建!')
       db.db('meteor').collection('page').find().toArray((err, result) => {
         if (err) {
           console.log(err)
         } else {
-          console.log(result)
+          // console.log(result)
           obj.$store.commit('Loading', result)
         }
         db.close()
@@ -41,13 +40,12 @@ export function LogIn (obj, user) {
     if (err) {
       console.log(err)
     } else {
-      console.log('数据库---已创建!')
       db.db('meteor').collection('user').find(user).toArray((err, result) => {
         if (err) {
           console.log(err)
         } else {
-          // console.log(result)
-          obj.$store.commit('LogIn', result)
+          console.log(result[0])
+          obj.$store.commit('LogIn', result[0])
         }
         db.close()
       })
@@ -60,7 +58,6 @@ export function SignIn (obj, user) {
     if (err) {
       console.log(err)
     } else {
-      console.log('数据库---已创建!')
       db.db('meteor').collection('user').find(user).toArray((err, result) => {
         if (err) {
           console.log(err)

@@ -5,7 +5,7 @@ const state = {
   main: 0,
   News: [],
   NewOne: {},
-  user: {type: false, name: '', password: ''}
+  user: {name: '', password: ''}
 }
 
 const mutations = {
@@ -27,20 +27,16 @@ const mutations = {
   },
   LogIn (state, user) {
     console.log(user)
-    if (user[0]) {
+    if (user) {
       state.user = user
-      state.user.type = true
     } else { window.alert('用户不存在') }
-    console.log(state.user)
+    console.log(state.user.name)
   },
   SignIn (state, name) {
     console.log(name)
   },
-  change (state) {
-    state.user.type = true
-  },
   UserOut (state) {
-    state.user.type = false
+    state.user = {name: '', password: ''}
   }
 }
 
