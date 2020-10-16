@@ -1,0 +1,13 @@
+<template name="data_site_info">
+ 
+  <table class="table table-condensed table-bordered table-striped">
+    {{#each sites}}
+    <tr class="success">
+      <td class="active">
+        <a href={{link}} target="_blank">{{title}}</a>
+      </td>
+      <td class="warning">{{link}}</td>
+    </tr>
+    {{/each}}
+  </table>
+</template>

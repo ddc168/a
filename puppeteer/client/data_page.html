@@ -1,0 +1,79 @@
+<template name="data_page_info" class="position-fixed fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_data" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar_data">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{webSite}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item web_link" href="#">百度-搜索</a>
+            <a class="dropdown-item web_link" href="#">必应-搜索</a>
+            <a class="dropdown-item web_link" href="#">搜狗-搜索</a>
+            <a class="dropdown-item web_link" href="#">360-搜索</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item web_link" href="#">知网-论文</a>
+            <a class="dropdown-item web_link" href="#">万方-论文</a>
+            <a class="dropdown-item web_link" href="#">维普-论文</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item web_link" href="#">知乎-论坛</a>
+            <a class="dropdown-item web_link" href="#">贴吧-论坛</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item web_link" href="#">简书-文章</a>
+          </div>
+        </li>
+        <li>
+          <form class="form-inline my-2 my-lg-0">
+            <input id="web" class="form-control mr-sm-2" type="search">
+            <div id="searchWeb" class="btn btn-outline-success">搜索</div>
+          </form>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{webPage}}页
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item getWeb" href="#">后一页</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item getWeb" href="#">后10页</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item getWeb" href="#">后50页</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item getWeb" href="#">后100页</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+        <li>
+          <div id="getPage" class="btn btn-outline-success">下载网页</div>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{{webConfig.web1}}" target="_blank">{{webConfig.web8}}</a>
+      </li>
+      <li class="breadcrumb-item"><em class="text-info">{{webConfig.web0}}</em></li>
+      <li class="breadcrumb-item"><em class="text-danger">站点：</em>共{{webHost}}站</li>
+      <li class="breadcrumb-item"><em class="text-danger">结果：</em>共{{webItem}}条</li>
+      <li class="breadcrumb-item"><em class="text-danger">搜索：</em>共{{webLink}}条</li>
+      <li class="breadcrumb-item"><em class="text-danger">论文：</em>共{{webPaper}}条</li>
+      <li class="breadcrumb-item"><em class="text-danger">帖子：</em>共{{webForum}}条</li>
+      <li class="breadcrumb-item"><em class="text-danger">新闻：</em>共{{webNews}}条</li>
+    </ol>
+  </nav>
+  <table class="table table-condensed table-bordered table-striped">
+    {{#each sites}}
+    <tr class="success">
+      <td class="active">
+        <a href={{link}} target="_blank">{{title}}</a>
+      </td>
+    </tr>
+    {{/each}}
+  </table>
+</template>

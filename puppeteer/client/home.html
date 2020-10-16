@@ -1,0 +1,72 @@
+<template name="home_info">
+  <ul class="list-group">
+      <li class="list-group-item"><em class="text-danger">项目总体思路：</em>
+        专家系统 -》管理系统 -》 语义网 -》 知识图谱
+        <ul>
+          <li>第一步：采集数据</li>
+          <li>第二步：生成知识框架（HL7、OpenEHR、DRGs）</li>
+          <li>第三步：在知识框架的基础上，产生式规则（DRGs）、语义网络、算法/模型</li>
+          <li>第四步：开发实际应用（DRGs分组器）</li>
+        </ul>
+      </li>  
+    <li class="list-group-item"><em class="text-danger">数据采集：</em>
+      初步清洗的数据保存到知识库中
+      <ul>
+        <li>结构化数据（mongodb、postgreSQL、neo4j）</li>
+        <li>文本数据（CSV、JSON、Txt、PDF）</li>
+        <li>网页数据（浏览器单页、后台爬虫）:
+          <a href="https://www.baidu.com/" target="_blank">百度</a>
+          <a href="https://cn.bing.com/" target="_blank">必应</a>
+          <a href="https://www.sogou.com/" target="_blank">搜狗</a>
+          <a href="https://www.so.com/" target="_blank">360搜索</a>
+          --
+          <a href="https://www.cnki.net/" target="_blank">知网</a>
+          <a href="http://www.wanfangdata.com.cn/index.html" target="_blank">万方</a>
+          <a href="http://www.cqvip.com/" target="_blank">维普</a>
+          --
+          <a href="https://www.zhihu.com/" target="_blank">知乎</a>
+          <a href="https://www.jianshu.com/" target="_blank">简书</a>
+          <a href="https://tieba.baidu.com/" target="_blank">贴吧</a>
+        </li>
+      </ul>
+    </li>
+    <li class="list-group-item"><em class="text-danger">知识发现：</em>
+      实体发现、关系发现、事件发现、实体融合、实体链接
+      <ul>
+        <li>网站URL</li>
+        <li>关键词主题--搜索词</li>
+        <li>医疗主题--机构、时间、症状、疾病、手术、药物、检查</li>
+        <li>医疗主题（现有标准）--ICD、DRG、SNOMED、UMLS</li>
+      </ul>
+    </li>
+    <li class="list-group-item"><em class="text-danger">知识展示：</em>
+      将发现的知识汇总统计、图表展示、模式生成（框架、产生式规则、语义网络、统计/深度模型）
+      <ul>
+        <li>医头条--基于关键词主题的网站/网页内容的汇集</li>
+        <li>微病案--基于关键词主题的病案内容的汇集/编辑</li>
+        <li>DRGs分组规则</li>
+        <li>DRGs绩效分析</li>
+        <li>HL7消息框架</li>
+        <li>openEHR病案模板</li>
+      </ul>
+    </li>
+    <li class="list-group-item"><em class="text-danger">知识推理：</em>
+      应用生成的模式，解决实际问题
+      <ul>
+          <li>DRGs分组器：（主诊、手术、个体差异）-（MDC、ADRG、DRG）</li>
+          <li>辅助诊疗：症状-疾病-治疗（手术、药物、检查）</li>
+          <li>HL7消息生成</li>
+          <li>openEHR病案生成</li>
+        </ul>
+    </li>
+    <li class="list-group-item"><em class="text-danger">知识问答：</em>
+      在解决问题的过程中，输出解决思路，回答用户疑问
+      <ul>
+          <li>DRGs分组解释器</li>
+          <li>辅助诊疗解释器--医生辅助/患者自助</li>
+          <li>HL7消息生成解释器</li>
+          <li>openEHR病案生成解释器</li>
+        </ul>
+    </li>
+  </ul>
+</template>
