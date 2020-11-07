@@ -1,20 +1,40 @@
-git clone https://github.com/ddc168/a
-git checkout a1
-git status
-git log
-git reset --hard
+版本管理工具git使用：
+    git clone https://github.com/ddc168/a
+    git checkout a1
+    git status
+    git log
+    git reset --hard
+
+
+linux的shell命令：
+    ls
+    pwd
+    cp /mnt/c/download/xx  ./
+    cd ~
 
 
 
-ls
-pwd
-cp /mnt/c/download/xx  ./
-cd ~
+python的工具箱anaconda的命令：
+    ~/anaconda3/bin/conda
 
+jupyter的初始化命令：
+    ~/anaconda3/bin/jupyter notebook
+    ~/anaconda3/bin/jupyter notebook --generate-config
+    ~/anaconda3/bin/jupyter notebook password
 
+    ~/anaconda3/bin/jupyter lab
 
+jupyter上可以支持的语言核心的列表：
+    ~/anaconda3/bin/jupyter kernelspec list
 
-~/anaconda3/bin/conda
-~/anaconda3/bin/jupyter notebook
-~/anaconda3/bin/jupyter notebook --generate-config
-~/anaconda3/bin/jupyter notebook password
+jupyter上增加c++的支持：
+    ~/anaconda3/bin/conda install xeus-cling -c conda-forge
+
+jupyter上增加c的支持：
+    ~/anaconda3/bin/conda install jupyter-c-kernel
+    install_c_kernel
+
+jupyter上增加js的支持：
+    npm install -g ijavascript
+    ijsinstall
+
