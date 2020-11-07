@@ -1,0 +1,20 @@
+git clone https://github.com/ddc168/a
+git checkout a1
+git status
+git log
+git reset --hard
+
+
+
+ls
+pwd
+cp /mnt/c/download/xx  ./
+cd ~
+
+
+
+
+~/anaconda3/bin/conda
+~/anaconda3/bin/jupyter notebook
+~/anaconda3/bin/jupyter notebook --generate-config
+~/anaconda3/bin/jupyter notebook password
