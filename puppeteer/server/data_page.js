@@ -177,11 +177,18 @@ export async function setWeb(web){
 
 // 在已经打开的page上，执行新的搜索
 export async function searchWeb(word){
-  console.log(word)
+  if(web8 == "搜狗-搜索"){
+    web6 = '#upquery'
+    web7 = '#searchBtn'
+  }
+  console.log(web0)
   web0 = word
   SiteConfig.update({_id: "webSite"}, { $set: { web0: web0 } });
   await page.$eval(web6,input => input.value="" );
   await page.type(web6, web0)
+  if(web8 == "搜狗-搜索"){
+    await page.waitFor(3000)
+  }
   await page.click(web7)
   await page.waitFor(3000)
   getWeb(0)
