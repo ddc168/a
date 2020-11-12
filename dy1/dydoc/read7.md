@@ -4,6 +4,9 @@ docker应用
     https://www.runoob.com/docker/docker-tutorial.html
     https://docs.docker.com/
 
+linux安装：
+    curl -sSL https://get.daocloud.io/docker | sh
+
 win10安装：
     电脑 -》 右键 -》属性 -》控制面板主页 -》程序 -》启用或关闭windows功能 -》Hyper-V 
 
@@ -29,3 +32,37 @@ ship 上传保存
 
 docker命令
     https://www.runoob.com/docker/docker-command-manual.html
+
+docker安装使用ubuntu
+    在docker desktop的settings里面，设置Resources下的file sharing，增加c:\dockerShare目录
+
+    docker run -it -p 3000:3000 -p 8888:8888 -v c:\dockerShare:/dockerShare  ubuntu:18.04 /bin/bash
+
+    更新阿里云的apt源镜像
+    https://www.jianshu.com/p/16502ed02e29
+
+    cd /etc/apt
+    cp sources.list sources.list.bak
+    rm sources.list
+    cp /dockerShare/sources.list sources.list
+    chmod 444 sources.list
+    apt update
+    apt upgrade
+    apt install curl
+
+    安装meteor
+    curl https://install.meteor.com/ | sh
+
+    useradd -d  /home/hitb -m hitb
+    su hitb
+    cd /dockerShare
+    meteor create myapp
+    cd myapp
+    meteor
+
+    exit
+
+    docker ps -a
+    docker start XX
+    docker attach xx
+
