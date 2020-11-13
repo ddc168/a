@@ -16,6 +16,10 @@ jupyter上可以支持的语言核心的列表：
     jupyter kernelspec list
 
 淘宝镜像设置：
+    curl -sL https://deb.nodesource.com/setup_15.x | bash -
+
+    apt install -y nodejs
+
     npm config set registry https://registry.npm.taobao.org
 
 jupyter上增加js的支持：
