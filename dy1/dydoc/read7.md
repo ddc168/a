@@ -36,7 +36,7 @@ docker命令
 docker安装使用ubuntu
     在docker desktop的settings里面，设置Resources下的file sharing，增加c:\dockerShare目录
 
-    docker run -it -p 3000:3000 -p 8888:8888 -v c:\dockerShare:/dockerShare  ubuntu:18.04 /bin/bash
+    docker run --name XX -it -p 3000:3000 -p 8888:8888 -v c:\dockerShare:/dockerShare  ubuntu:18.04 /bin/bash
 
     更新阿里云的apt源镜像
     https://www.jianshu.com/p/16502ed02e29
@@ -44,8 +44,8 @@ docker安装使用ubuntu
     cd /etc/apt
     cp sources.list sources.list.bak
     rm sources.list
-    cp /dockerShare/sources.list sources.list
-    chmod 444 sources.list
+    ln -s /dockerShare/sources.list sources.list
+
     apt update
     apt upgrade
     apt install curl
@@ -53,7 +53,7 @@ docker安装使用ubuntu
     安装meteor
     curl https://install.meteor.com/ | sh
 
-    useradd -d  /home/hitb -m hitb
+    useradd -d  /home/hitb -m hitb -G root
     su hitb
     cd /dockerShare
     meteor create myapp
@@ -66,3 +66,14 @@ docker安装使用ubuntu
     docker start XX
     docker attach xx
 
+    安装jupyter
+        安装anaconda
+        jupyter lab --allow-root --ip '*' 
+        修改jupyter_notebook_config.py中的
+            c.NotebookApp.ip = '*'
+           
+
+    https://github.com/jupityter/docker-stacks
+    https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html
+
+    docker run -p 8888:8888 jupyter/scipy-notebook
