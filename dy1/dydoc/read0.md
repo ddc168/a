@@ -15,26 +15,30 @@
         桌面下菜单栏 -》 microsoft store -》linux
 
         更新阿里云的apt源镜像
-        https://www.jianshu.com/p/16502ed02e29
+            https://www.jianshu.com/p/16502ed02e29
 
-        https://www.runoob.com/linux/linux-tutorial.html
-        https://www.runoob.com/linux/linux-comm-apt.html
+        使用教程
+            https://www.runoob.com/linux/linux-tutorial.html
+            https://www.runoob.com/linux/linux-comm-apt.html
 
     2、win10安装docker（远程服务器练习）：
         电脑 -》 右键 -》属性 -》控制面板主页 -》程序 -》启用或关闭windows功能 -》Hyper-V 
 
-        https://hub.docker.com/  下载安装docker-desktop
+        下载安装docker-desktop
+            https://hub.docker.com/  
 
-        镜像加速 https://registry.docker-cn.com
+        镜像加速，在docker dashBoard上面设置
+            https://registry.docker-cn.com
 
-        https://www.runoob.com/docker/docker-tutorial.html
-        https://docs.docker.com/
-        https://www.runoob.com/docker/docker-command-manual.html
+        使用教程
+            https://www.runoob.com/docker/docker-tutorial.html
+            https://docs.docker.com/
+            https://www.runoob.com/docker/docker-command-manual.html
 
     3、docker安装使用ubuntu
         在docker desktop的settings里面，设置Resources下的file sharing，增加c:\dockerShare目录
 
-        docker run --name XX -it -p 21:21 -p 22:22 -p 80:80 -p 3000:3000 -p 3001:3001 -p 4000:4000 -p 5000:5000 -p 5432:5432 -p 8000:8000 -p 8888:8888 -p 27017:27017 -v c:\dockerShare:/dockerShare  ubuntu:18.04 /bin/bash
+        docker run --name XX -it -p 21:21 -p 22:22 -p 80:80 -p 3000:3000 -p 3001:3001 -p 4000:4000 -p 5000:5000 -p 5432:5432 -p 8000:8000 -p 8888:8888 -p 8889:8889 -p 27017:27017 -v c:\dockerShare:/dockerShare  ubuntu:18.04 /bin/bash
 
         更新阿里云的apt源镜像
         https://www.jianshu.com/p/16502ed02e29
@@ -46,7 +50,7 @@
 
         apt update
         apt upgrade
-        apt install curl  wget
+        apt install curl  wget  git
         
         passwd
 
@@ -66,8 +70,8 @@
         记录下安装后提示的最后内容，在浏览器打开：        
             外网面板地址: http://222.130.243.73:8888/fc0260e8
             内网面板地址: http://127.0.0.1:8888/fc0260e8
-            username: st8esxzj
-            password: 07deb5cc
+            username: hitb
+            password: hitb123456
         
         bt start
     
@@ -88,9 +92,20 @@
 
             /etc/init.d/ssh restart
 
+        ssh命令行登录
+            ssh root@127.0.0.1
 
-编程工具（git，vscode，jupyter，vi）
+    6、增加非root用户，用于开发时用
+        useradd -d  /home/hitb -m hitb -G root
+
+        su hitb
+
+        exit
+
+第四步：编程工具（git，vscode，jupyter）
     git使用：
+        在dockerShare目录下创建git目录，作为开发工作目录
+
         https://www.runoob.com/git/git-tutorial.html
 
         .gitignore文件
@@ -101,25 +116,52 @@
         
         https://coding.net/
 
-编程语言（html，css，js，python）
-    安装jupyter
-        安装anaconda
-        jupyter lab --allow-root --ip '*' 
+    vscode使用（本机开发）：
+        在win10上安装vscode
+        打开/dockerShare/git目录
+        
+    jupyter使用（远程开发）
+        在ubuntu上安装anaconda
+            https://www.anaconda.com/
+
+        增加快捷链接
+            ln -s ~/anaconda3/bin/conda  /usr/bin/
+            ln -s ~/anaconda3/bin/pip  /usr/bin/
+            ln -s ~/anaconda3/bin/jupyter  /usr/bin/
+
+        启动：
+            jupyter lab --allow-root --ip '*' --port 4000
+
+        初始化：
+            jupyter notebook --generate-config
+            jupyter notebook password
+
         修改jupyter_notebook_config.py中的
             c.NotebookApp.ip = '*'
 
-编程框架（meteor，flask，phoenix）
+第五步：编程语言（html，css，js，python，c和c++，R，SQL）
+    https://www.runoob.com/
+    https://www.w3cschool.cn/
+    https://www.w3school.com.cn/
+    http://c.biancheng.net/
+
+第六步：编程框架（meteor，flask，phoenix）
     安装meteor
         curl https://install.meteor.com/ | sh
 
-        useradd -d  /home/hitb -m hitb -G root
         su hitb
-        cd /dockerShare
+        cd /dockerShare/git
         meteor create myapp
         cd myapp
         meteor
 
-编程类库（puppeteer，pandas）
+第七步：编程类库（puppeteer，pandas）
+
+
+第八步：软件需求-业务理解
+
+
+第九步：实际项目经验
 
 
 
