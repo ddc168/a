@@ -14,6 +14,8 @@ export const Snews = new Mongo.Collection("snews");
 // 搜索条目对应的网页
 export const Page = new Mongo.Collection("page");
 
+export const P1 = new Mongo.Collection("p1");
+export const P2 = new Mongo.Collection("p2");
 
 // export function mongodb(a){
 //   client.connect(function(err) {
