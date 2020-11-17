@@ -1,10 +1,11 @@
 第一步：买一台电脑（高配置，cpu-显卡gpu-内存-固态硬盘-主板多接口）
     预算8000元以上，否则使用时运行等待时间过长，会兴趣大减，严重影响学习效率。
+    推荐华为笔记本。
 
 第二步：windows正常使用（办公、多媒体开发）
     U盘启动安装win10
     安装wpsOffice办公软件
-    安装图像、视频、音频的编辑软件
+    安装图像、视频、音频的编辑软件（photoshop，flash等）
 
 第三步：linux使用（win10-linux，docker-linux）
     1、win10安装linux（本机练习）：
@@ -84,11 +85,8 @@
 
             ps -e|grep ssh
 
-            cp /etc/ssh/sshd_config sshd_config.bak
-            cp /etc/ssh/sshd_config /dockerShare/sshd_config
-            rm /etc/ssh/sshd_config
-            配置文件中增加一句root登录允许 PermitRootLogin yes
-            ln -s /dockerShare/sshd_config /etc/ssh/sshd_config
+            在/etc/ssh/sshd_config配置文件中增加一句root登录允许 
+                PermitRootLogin yes
 
             /etc/init.d/ssh restart
 
@@ -128,9 +126,7 @@
             ln -s ~/anaconda3/bin/conda  /usr/bin/
             ln -s ~/anaconda3/bin/pip  /usr/bin/
             ln -s ~/anaconda3/bin/jupyter  /usr/bin/
-
-        启动：
-            jupyter lab --allow-root --ip '*' --port 4000
+            ln -s ~/anaconda3/bin/python  /usr/bin/
 
         初始化：
             jupyter notebook --generate-config
@@ -138,12 +134,77 @@
 
         修改jupyter_notebook_config.py中的
             c.NotebookApp.ip = '*'
+            c.NotebookApp.allow_root = True
+
+        jupyter上可以支持的语言核心的列表：
+            jupyter kernelspec list
+        
+        启动：--allow-root --ip '*' --port 4000
+            jupyter lab 
+
+    增加镜像站点：
+        conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge  
+
+        conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/  
+
+        conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/  
+
+        conda config --set show_channel_urls yes 
 
 第五步：编程语言（html，css，js，python，c和c++，R，SQL）
     https://www.runoob.com/
     https://www.w3cschool.cn/
     https://www.w3school.com.cn/
     http://c.biancheng.net/
+
+    jupyter上增加c的支持：
+        pip install jupyter-c-kernel
+
+        install_c_kernel
+
+    nodejs安装：
+        curl -sL https://deb.nodesource.com/setup_15.x | bash -
+
+        apt install -y nodejs
+
+        npm config set registry https://registry.npm.taobao.org
+
+    jupyter上增加js的支持：(这里有错误，zeromq的安装有问题)
+        apt install -y libtool pkg-config build-essential autoconf automake uuid-dev 
+
+        http://download.zeromq.org/  源码下载并安装zeromq
+            ./configure
+            make
+            make install
+
+        npm install -g ijavascript --unsafe-perm=true --allow-root
+
+        ijsinstall
+
+    R安装：
+        /etc/apt/sources.list文件中添加
+        deb https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/linux/ubuntu bionic-cran40/
+
+        添加密钥
+        apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+
+        gpg --keyserver keyserver.ubuntu.com --recv-key E298A3A825C0D65DFD57CBB651716619E084DAB9
+
+        apt install r-base
+        apt install r-base-dev
+
+    jupyter上增加R支持
+        在R环境下执行
+            install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))
+
+            Sys.setenv(R_INSTALL_STAGED = FALSE)
+
+            devtools::install_github('IRkernel/IRkernel')
+
+            options(download.file.method = "wget")
+
+            IRkernel::installspec()
+
 
 第六步：编程框架（meteor，flask，phoenix）
     安装meteor
