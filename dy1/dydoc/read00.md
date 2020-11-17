@@ -190,3 +190,12 @@ centos安装postgresql
 
 第六，使用数据库和python、r处理分析数据
 
+python代码：
+    import numpy as np
+    import pandas as pd
+    f = pd.read_csv('../../../p2.csv')
+    f
+
+R代码：
+    f <- read.csv('../../../p2.csv', header = FALSE)
+    f
