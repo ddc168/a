@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { pupp, setWeb, getWeb, searchWeb, getPage, getHost } from './data_page';
 import { p1 } from './p1';
 import { p2 } from './p2';
+import { p3 } from './p3';
 // 使用fetch，自动获取通过上面搜索保存的网页条目链接的详细页
 import { getWebSite } from './data_site';
 // 使用fetch，自动获取网站内容
@@ -12,6 +13,7 @@ Meteor.startup(() => {
   console.log("dyme is startUp!")
   // pupp()
   // p2()
+  // p3()
 });
 
 Meteor.methods({

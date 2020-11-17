@@ -3,3 +3,6 @@
 /node_modules
 
 *.exe
+
+p*.txt
+p*.csv
