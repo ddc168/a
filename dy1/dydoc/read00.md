@@ -1,4 +1,4 @@
-云服务器上常用的linux版本的使用：
+第一，云服务器上常用的linux版本的使用：
 
 阿里云开源镜像站：http://mirrors.aliyun.com/
 
@@ -58,7 +58,7 @@ centos:8
         curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-8.repo
 
 
-简单好用的服务器面板    https://www.bt.cn/
+第二，简单好用的服务器面板    https://www.bt.cn/
     
 ubuntu安装宝塔Bt
     wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh && bash install.sh 2de292
@@ -83,3 +83,110 @@ centos启动ssh服务
         netstat -antp | grep sshd 
     设置服务为开机启动
         chkconfig sshd on 
+
+第三，数据分析要使用mongodb，postgresql，python，R
+
+ubuntu安装mongodb
+    apt-get install mongodb
+
+    创建/data/db/目录
+
+    nohup mongod &
+
+    https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+        wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
+
+    ubuntu18.04
+        echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+    ubuntu20.04
+        echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+    apt update
+
+    apt install -y mongodb-org
+
+ubuntu安装postgresql
+    https://www.postgresql.org/download/linux/ubuntu/
+
+    sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
+    apt update
+
+    apt -y install postgresql
+
+centos安装postgresql
+    https://www.postgresql.org/download/linux/redhat/
+
+
+第四，爬虫获取数据
+    import { P2 } from '../lib/db';
+    const puppeteer = require('puppeteer');
+    const cheerio = require('cheerio');
+
+    // (async () => { 
+    export  async function p2() {
+    const browser = await puppeteer.launch({
+        headless: false,
+        defaultViewport: {width:1400, height:1200},
+        args: ['--start-maximized']
+    })
+    let pages = await browser.pages();
+    let page = pages[0];
+    await page.goto('https://www.cnki.net/')
+    await page.waitFor(10000)
+    openWeb(page)
+    }
+    // )()
+
+    async function openWeb(page){
+    await page.waitFor(3000)
+    let frame = await page.mainFrame()
+    let bodyHandle = await frame.$('html');
+    let html = await frame.evaluate(body => body.innerHTML, bodyHandle);
+    await bodyHandle.dispose(); 
+    saveWeb(html)
+    openWeb(page)
+    }
+
+    function saveWeb(html){
+    const $ = cheerio.load(html)
+    $("#briefBox #gridTable table tbody tr").each(function(index, element){
+      const item = $(element);
+      seq = item.find(".seq").text();
+      link = item.find(".name a").attr("href")
+      name = item.find(".name a").text()
+      author = item.find(".author a").text();
+      source = item.find(".source a").text();
+      date = item.find(".date").text();
+      data = item.find(".data").text();
+      quote = item.find(".quote").text();
+      download = item.find(".download").text();
+      P2.insert({seq:seq, link:link, name:name, author:author, source:source, 
+        date:date, data:data, quote:quote, download:download})
+      console.log(seq)
+    })
+    }
+
+第五，转换csv文件
+    import { P2 } from '../lib/db';
+    const fs = require("fs")
+    const os = require("os")
+    const readline = require('line-read')
+        
+    export function p3(){
+        P2.find({},{sort: {$seq:1}}).forEach(e => {
+            fs.appendFileSync("c:/git/a/puppeteer/p3.txt", e.seq + e.link + e.name + 
+            e.author + e.source + e.date + e.data + e.quote + e.download + os.EOL)
+        });
+        
+        readline.readLineFromFile("c:/git/a/puppeteer/p3.txt").join(function(xs) {
+            fs.writeFileSync("c:/git/a/puppeteer/p1.csv", xs)
+        });
+    }
+
+第六，使用数据库和python、r处理分析数据
+
