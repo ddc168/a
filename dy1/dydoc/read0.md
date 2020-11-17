@@ -39,7 +39,7 @@
     3、docker安装使用ubuntu
         在docker desktop的settings里面，设置Resources下的file sharing，增加c:\dockerShare目录
 
-        docker run --name XX -it -p 21:21 -p 22:22 -p 80:80 -p 3000:3000 -p 3001:3001 -p 4000:4000 -p 5000:5000 -p 5432:5432 -p 8000:8000 -p 8888:8888 -p 8889:8889 -p 27017:27017 -v c:\dockerShare:/dockerShare  ubuntu:18.04 /bin/bash
+        docker run --name XX -it --privileged=true -p 21:21 -p 22:22 -p 80:80 -p 3000:3000 -p 3001:3001 -p 4000:4000 -p 5000:5000 -p 5432:5432 -p 8000:8000 -p 8888:8888 -p 8889:8889 -p 27017:27017 -v c:\dockerShare:/dockerShare  ubuntu:18.04 /bin/bash
 
         更新阿里云的apt源镜像
         https://www.jianshu.com/p/16502ed02e29
@@ -142,6 +142,9 @@
         启动：--allow-root --ip '*' --port 4000
             jupyter lab 
 
+        后台运行：
+            nohup jupyter lab &
+
     增加镜像站点：
         conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge  
 
@@ -218,12 +221,64 @@
 
 第七步：编程类库（puppeteer，pandas）
 
+    https://zhaoqize.github.io/puppeteer-api-zh_CN/#/
+
+    https://www.pypandas.cn/docs/
+
 
 第八步：软件需求-业务理解
+    1、网上收集数据
+    2、转换为csv文件
+    3、导入数据表：mongo的collection，pg的table，python的pandas，R的dataframe
+    4、数据清理，文字处理
+    5、分类、回归
+    6、生成规则，应用规则
 
 
 第九步：实际项目经验
+    docker start u18
+    docker attach u18
+    bt start
+    cd /dockerShare
+    nohup jupyter lab &
+    cd myapp
+    su hitb
+    meteor
+    打开浏览器，分屏打开8888，8889，3000
 
+第十步：其他系统软件
+ubuntu安装mongodb
+    https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
+        wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
+
+    ubuntu18.04
+        echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+    ubuntu20.04
+        echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+    apt update
+
+    apt install -y mongodb-org
+
+    创建/data/db/目录
+
+    nohup mongod &
+
+    mongo
+
+ubuntu安装postgresql
+    https://www.postgresql.org/download/linux/ubuntu/
+
+    sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
+    apt update
+
+    apt -y install postgresql
+
+    psql
 
 
