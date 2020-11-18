@@ -22,6 +22,9 @@ df.columns
 df[df.columns[1]]
 df[df.columns[1]].value_counts()
 
+#保存和读取pickle文件，方便后期使用
+#df.to_pickle('./df.pkl')
+#df = pd.read_pickle('./df.pkl')
 
 #去除重复数据行，空值替换为空字符
 df.drop_duplicates(keep='first', inplace=True)
@@ -130,7 +133,7 @@ df_qikan[df_qikan.columns[4]] = df_qikan.apply(lambda x:  \
 
 
 #最难的就是文章标题name，作者author，发表杂志来源source的这3个字段文字处理工作
-#有3种处理方式，人工字典，统计学习，深度学习
+#有3种处理方式，jieba人工字典，统计学习，深度学习
 
 
 
