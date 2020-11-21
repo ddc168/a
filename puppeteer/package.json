@@ -13,9 +13,11 @@
   "dependencies": {
     "@babel/runtime": "^7.3.4",
     "cheerio": "^1.0.0-rc.3",
+    "line-read": "^1.0.1",
     "meteor-node-stubs": "^0.4.1",
     "mongodb": "^3.3.2",
     "node-fetch": "^2.6.0",
+    "pg": "^8.5.1",
     "puppeteer": "^1.20.0",
     "saslprep": "^1.0.3"
   },
