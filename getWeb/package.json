@@ -9,8 +9,12 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
+    "cheerio": "^1.0.0-rc.3",
     "jquery": "^3.5.1",
-    "meteor-node-stubs": "^1.0.1"
+    "line-read": "^1.0.1",
+    "meteor-node-stubs": "^1.0.1",
+    "node-fetch": "^2.6.1",
+    "puppeteer": "^5.5.0"
   },
   "meteor": {
     "mainModule": {
