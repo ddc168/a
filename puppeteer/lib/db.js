@@ -16,6 +16,7 @@ export const Page = new Mongo.Collection("page");
 
 export const P1 = new Mongo.Collection("p1");
 export const P2 = new Mongo.Collection("p2");
+export const P3 = new Mongo.Collection("p3");
 
 // export function mongodb(a){
 //   client.connect(function(err) {
