@@ -53,5 +53,5 @@ async function openWeb(page){
 function saveWeb(html){
   const $ = cheerio.load(html)
   let content = $("#amain h1").text() + os.EOL + $("#contents").text() + os.EOL
-  fs.appendFileSync("./docs/啊.csv", content)
+  fs.appendFileSync("./docs/xx.txt", content)
 }
