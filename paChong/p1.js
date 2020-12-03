@@ -17,7 +17,7 @@ const fetch = require('node-fetch');
   let pages = await browser.pages();
   let page = pages[0];
   await page.goto('https://www.cnki.net/')
-  await page.waitFor(10000)
+  await page.waitForTimeout(10000)
   openWeb(page)
 }
 )()
@@ -25,7 +25,7 @@ const fetch = require('node-fetch');
 // 打开搜索结果页面（在主函数里循环执行）
 async function openWeb(page){
   console.log('在浏览器上点击下一页！--10秒后页面被抓取！')
-  await page.waitFor(10000)
+  await page.waitForTimeout(10000)
   let frame = await page.mainFrame()
   let bodyHandle = await frame.$('html');
   let html = await frame.evaluate(body => body.innerHTML, bodyHandle);
@@ -35,14 +35,14 @@ async function openWeb(page){
   } catch (error) {
     console.log(error)
     console.log('在浏览器上手动通过验证！--20秒后页面继续更新！')
-    await page.waitFor(20000)
+    await page.waitForTimeout(20000)
   }
   try {
     await page.click("#briefBox #PageNext")
   } catch (error) {
     console.log(error)
     console.log('在浏览器上手动通过验证！--20秒后页面继续更新！')
-    await page.waitFor(20000)
+    await page.waitForTimeout(20000)
   }
   openWeb(page)
 }
@@ -50,7 +50,8 @@ async function openWeb(page){
 // 保存《知网列表详细页面》清洗后的网页内容到csv文件
 function saveWeb(html){
   const $ = cheerio.load(html)
-  let seq, link, name, author, source, date, data = ""
+  let seq, link, name, author, source, date, data
+  let pages = "获取条目数："
   $("#briefBox #gridTable dl dd").each(function(index, element){
     const item = $(element);
     seq = item.find(".seq").text().replace(/,/g, ";").replace(/\s+/g, " ");
@@ -62,11 +63,12 @@ function saveWeb(html){
     data = item.find(".middle .abstract").text().replace(/,/g, ";").replace(/\s+/g, " ");
     const matcht = new RegExp(/^(https?:\/\/)([0-9a-z.]+)(:[0-9]+)?([/0-9a-z.]+)?(\?[0-9a-z&=]+)?(#[0-9-a-z]+)?/i)
     const result = matcht.exec(link)
-    console.log(seq)
+    pages = pages + '--' + seq
     // 循环写入csv文件
-    fs.appendFileSync("./docs/xx.csv", seq+ ","+ name+ "," + 
+    fs.appendFileSync("./docs/自然语言.csv", seq+ ","+ name+ "," + 
         author+ "," + source+ "," + date+ "," + data + os.EOL + os.EOL)
   })
+  console.log(pages)
 }
 
 // 保存《知网列表简单页面》清洗后的网页内容到csv文件
