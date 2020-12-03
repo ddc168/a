@@ -64,7 +64,7 @@ function saveWeb(html){
     const result = matcht.exec(link)
     console.log(seq)
     // 循环写入csv文件
-    fs.appendFileSync("./docs/hl7.csv", seq+ ","+ name+ "," + 
+    fs.appendFileSync("./docs/xx.csv", seq+ ","+ name+ "," + 
         author+ "," + source+ "," + date+ "," + data + os.EOL + os.EOL)
   })
 }
