@@ -16,4 +16,4 @@ df_1 = data.split("\n")
 for i in range(0, len(df_1)-1, 2):
     df_txt.loc[i] = {'chapter': df_1[i],'content': df_1[i+1]}
 
-df_txt = pd.DataFrame([data_k, data_v])
+# df_txt = pd.DataFrame([data_k, data_v])

@@ -1,13 +1,22 @@
 # nodejs获取数据：
-## 最简化的爬虫1：puppeteer + cheerio
+## 最简化的爬虫1：puppeteer + cheerio，在中国知网上搜索论文摘要
   在本目录下增加一个docs目录，用于存放爬虫获取的数据
   cnpm install
   node ./p1.js
   在打开的首页上填写搜索关键词，在打开的搜索结果页面上点击《详情》选项
 
-## 简化的爬虫2：node-fetch + encoding
+## 简化的爬虫2：node-fetch + encoding，在顶点小说网上搜索小说全本
   node ./p2.js
   在打开的首页上的最近更新小说列表中，点击一本小说
+
+## 简化的爬虫3：在拉钩网上搜索招聘职位信息
+  node ./p2.js
+  在打开的首页上的搜索框中，输入XX，获取职位的详细信息
+
+## 简化的爬虫4：在百度网上搜索医院的名称和网址
+  node ./p2.js
+  在打开的首页上的搜索框中，输入“医院”，筛选title中包含“医院”的，保存title和href
+
 # python分析数据：
 
 
