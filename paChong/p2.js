@@ -52,6 +52,6 @@ async function openWeb(page){
 // 保存《知网列表详细页面》清洗后的网页内容到csv文件
 function saveWeb(html){
   const $ = cheerio.load(html)
-  let content = $("#amain h1").text() + os.EOL + $("#contents").text() + os.EOL
-  fs.appendFileSync("./docs/xx.txt", content)
+  let content = $("#amain h1").text() + '    ' + $("#contents").text() + os.EOL + os.EOL
+  fs.appendFileSync("./docs/x2.txt", content)
 }

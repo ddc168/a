@@ -35,7 +35,7 @@ async function openWeb(page){
     const item = $(element);
     // if(stop){
       try {
-        // console.log(item.text())
+        console.log(item.text().replace(/\s+/g, " "))
         // console.log(item.attr("href"))
         fetch(item.attr("href")).then(
           res => res.textConverted()).then(data => saveWeb(data))
@@ -52,7 +52,7 @@ async function openWeb(page){
 // 保存《拉钩网招聘职位详细页面》清洗后的网页内容到txt文件
 function saveWeb(html){
   const $ = cheerio.load(html)
-  let content = $(".job_company").text().replace(/,/g, ";").replace(/\s+/g, " ") + os.EOL + 
+  let content = $(".job_company").text().replace(/,/g, ";").replace(/\s+/g, " ") + '    ' + 
     $(".job_detail").text().replace(/,/g, ";").replace(/\s+/g, " ") + os.EOL + os.EOL
-  fs.appendFileSync("./docs/xx.txt", content)
+  fs.appendFileSync("./docs/x3.txt", content)
 }
