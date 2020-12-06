@@ -3,41 +3,35 @@
 const fs = require('fs');
 const os = require('os');
 const puppeteer = require('puppeteer');
-const cheerio = require('cheerio');
-const fetch = require('node-fetch');
-const readline = require('line-read');
+const f = fs.readFileSync('./docs/x4.txt').toString().split('\r\n');
+const matcht = new RegExp(/^(https?:\/\/)([0-9a-z.]+)(:[0-9]+)?([/0-9a-z.]+)?(\?[0-9a-z&=]+)?(#[0-9-a-z]+)?/i);
 
-// 浏览器打开百度网，在搜索框中输入关键词
+// 读取百度网搜索结果，在浏览器中循环打开网址，保存真正的网址
 (async () => { 
   const browser = await puppeteer.launch({
-    headless: false,
-    defaultViewport: {width:1000, height:1000},
-    args: ['--start-maximized']
+    // headless: false,
+    // defaultViewport: {width:1000, height:1000},
+    // args: ['--start-maximized']
   })
   let pages = await browser.pages();
   let page = pages[0];
-  // for (i in readline.readLineFromFile("./docs/医院.txt").line){
-  //   console.log(i)
-  //   //   openWeb(page, url)
-  // }
-}
-)()
-
-// 打开搜索结果页面（在主函数里循环执行）
-async function openWeb(page, url){
-  await page.goto(url)
-  await page.waitForTimeout(5000)
-  let frame = await page.mainFrame()
-  let bodyHandle = await frame.$('html');
-  let html = await frame.evaluate(body => body.innerHTML, bodyHandle);
-  await bodyHandle.dispose(); 
-  const $ = cheerio.load(html)
-  try {
-    console.log($.title())
-    console.log($.href())
-    fs.appendFileSync("./docs/x5.txt", $.title() + '    ' + $.href() + os.EOL + os.EOL)
-  } catch (error) {
-    console.log(error)
+  let s, x, t
+  for(i in f){
+    s = f[i].split('    ')
+    // console.log(s[1])
+    if(s[1]){
+      try {
+        await page.goto(s[1])
+        x = matcht.exec(page.url())
+        await page.goto(x[1]+x[2])
+        t = await page.title()
+        console.log(t)
+        console.log(x[1]+x[2])
+        fs.appendFileSync("./docs/x6.txt", t + '    ' +x[1]+x[2] + os.EOL)        
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 }
-
+)()
