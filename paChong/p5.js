@@ -33,5 +33,6 @@ const matcht = new RegExp(/^(https?:\/\/)([0-9a-z.]+)(:[0-9]+)?([/0-9a-z.]+)?(\?
       }
     }
   }
+  process.exit()
 }
 )()
