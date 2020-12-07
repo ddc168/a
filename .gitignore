@@ -8,3 +8,5 @@ p*.txt
 p*.csv
 f*.txt
 *.pkl
+
+web*/

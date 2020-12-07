@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 
-// 浏览器打开知网
+// 浏览器打开顶点小说网
 (async () => { 
   const browser = await puppeteer.launch({
     headless: false,
@@ -49,7 +49,7 @@ async function openWeb(page){
   })
 }
 
-// 保存《知网列表详细页面》清洗后的网页内容到csv文件
+// 保存《顶点小说详细页面》清洗后的网页内容到txt文件
 function saveWeb(html){
   const $ = cheerio.load(html)
   let content = $("#amain h1").text() + '    ' + $("#contents").text() + os.EOL + os.EOL
