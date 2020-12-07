@@ -54,5 +54,5 @@ function saveWeb(html){
   const $ = cheerio.load(html)
   let content = $(".job_company").text().replace(/,/g, ";").replace(/\s+/g, " ") + '    ' + 
     $(".job_detail").text().replace(/,/g, ";").replace(/\s+/g, " ") + os.EOL + os.EOL
-  fs.appendFileSync("./docs/x3.txt", content)
+  fs.appendFileSync("./docs/zp3.txt", content)
 }
