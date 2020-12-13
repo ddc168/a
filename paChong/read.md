@@ -31,13 +31,31 @@
   node ./p7.js
   在打开的首页上的搜索框中，输入XX，获取商品的详细信息
 
+
+## 简化的爬虫8：在淘宝商城网上搜索商品信息
+  node ./p8.js
+  在打开的首页上，先手工登录，然后再搜索框中输入XX，获取商品的列表信息
+
+
 # python分析数据：
 
+  pandas 表格处理
 
+  matplotlib 图表处理
 
-# elixir开发应用：
+  sklearn 模型分析
+
+  jieba 中文分词
 
 
 # docker服务器环境：
+  docker pull buildkite/puppeteer
+
+  docker run --name pachong -it --privileged=true -v c:\dockerShare:/dockerShare  buildkite/puppeteer /bin/bash
+
+  增加非root用户，用于执行爬虫
+    useradd -d  /home/hitb -m hitb -G root
+
+  su hitb
 
 
