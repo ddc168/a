@@ -36,3 +36,13 @@ df_3 = df_1.loc[(df_1['gw'].str.contains('服装')) & (df_1['gw'].str.contains('
 # 把处理结果写入csv文件
 df_2['gw'].to_csv('C:/dockerShare/git/a/paChong/docs/zpp7.csv')
 
+s1 = df_1['zw']
+a = s1[0]
+b = re.sub(r' +', ' ',a)
+b = re.match(r'(.*)：(.*)', a)
+b = re.match(r'(.*)(：)(.*)', a)
+b = re.search(r'(：)(.*)', a)
+b = re.split(r' ', b)
+c = b.groups()
+d = b.group(0)
+print(c)
