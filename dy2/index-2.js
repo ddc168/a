@@ -33,17 +33,10 @@ async function openWeb(page, browser){
   let html = await frame.evaluate(body => body.innerHTML, bodyHandle);
   await bodyHandle.dispose(); 
   const $ = cheerio.load(html)
-  let new_page = await browser.newPage();
-  $("#container #content_left .result h3 a").each(async function(index, element){
+  
+  $("#container #content_left .result h3 a").each(function(index, element){
     const url = $(element).attr("href")
-    try {
-      await new_page.goto(url)
-      let web_url = matcht.exec(new_page.url())
-      let web_title = await new_page.title()
-      fs.appendFileSync("./x6.txt", web_title + ',' + web_url[1] + web_url[2] + os.EOL)
-    } catch (error) {
-      console.log(error)
-    }   
+    getWeb(url, browser)
   })
   await page.waitForTimeout(10000)
   try {
@@ -58,3 +51,15 @@ async function openWeb(page, browser){
   }
 }
 
+async function getWeb(url, browser){
+  try {
+    let page = await browser.newPage();
+    await page.goto(url)
+    let web_url = matcht.exec(page.url())
+    let web_title = await page.title()
+    fs.appendFileSync("./x6.txt", web_title + ',' + web_url[1] + web_url[2] + os.EOL)
+    page.close()
+  } catch (error) {
+    console.log(error)
+  }
+}

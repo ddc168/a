@@ -2,6 +2,18 @@ import numpy as np
 import pandas as pd
 import jieba 
 import re
+import seaborn as sns
+
+s = pd.Series([1,3,2], index=list('ABC'))
+s1 = pd.Series([3,2,1], index=list('ABC'))
+d = s.to_frame()
+d[1] = s1
+sns.set(style='whitegrid')
+s.plot(kind='line')
+d.plot(kind='line')
+
+
+s = pd.Series(list(df_1['zw']), index=list(df_1['url']))
 
 #读取csv数据文件
 df_1 = pd.read_csv('C:/dockerShare/git/a/paChong/docs/zp6.csv',error_bad_lines=False)
