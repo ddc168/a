@@ -1,0 +1,19 @@
+{
+  "name": "b",
+  "version": "1.0.0",
+  "description": "",
+  "main": "i.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.5",
+    "encoding": "^0.1.13",
+    "fetch": "^1.1.0",
+    "node-fetch": "^2.6.1",
+    "puppeteer": "^5.5.0",
+    "re": "^0.1.4"
+  }
+}
