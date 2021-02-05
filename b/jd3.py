@@ -15,11 +15,22 @@ import seaborn as sns
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+from numpy import array
+from numpy import argmax
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
+from wordcloud import WordCloud
+from sklearn.tree import ExtraTreeClassifier
+from sklearn.metrics import roc_curve, auc
+from sklearn.metrics import roc_auc_score
+from sklearn import preprocessing
 
 
 from matplotlib.font_manager import FontProperties
 myfont=FontProperties(fname=r'C:\Windows\Fonts\simhei.ttf',size=14)
 sns.set(font=myfont.get_name())
+
+text = open(r'C:/git/a/b/p3-1.txt', encoding='utf-8').read()
 
 df_1=pd.read_csv(r'C:/git/a/b/p3-1.csv',error_bad_lines=False,\
                  header=None,names=['销量','价格','厂家','d','e','f','g'])
@@ -251,10 +262,218 @@ shop = df_3[df_3.columns[5]].value_counts()
 
 
 
+def reduce_weight(x):
+    x = re.search(r'\d+.?\d+',x)
+    x = x.group(0)
+    x = float(x)
+    if x<=10:
+        x = x*1000
+    return x
+df_3['weight1'] = df_3['weight'].apply(lambda x: reduce_weight(x))
+
+
+def reduce_nc(x):
+    x = re.search(r'\d+',x)
+    if x:
+        x = x.group(0)
+        x = float(x)
+    else:
+        x = 0
+    return(x)
+df_3['nc1'] = df_3['nc'].apply(lambda x: reduce_nc(x))
+
+def reduce_cc(x):
+    x = re.search(r'\d+',x)
+    if x:
+        x = x.group(0)
+        x = float(x)
+    else:
+        x = 0
+    return(x)
+df_3['cc1'] = df_3['cc'].apply(lambda x: reduce_cc(x))
+
+def reduce_cck(x):
+    if x == '支持MicroSD(TF)':
+        x = 'MicroSD(TF)'
+    if x == '其它存储卡':
+        x = '其它存储卡'
+    if x == 'NM存储卡':
+        x = 'NM存储卡'
+    if x == '不支持存储卡':
+        x = '不支持存储卡'
+    if x == '':
+        x = '不支持存储卡'
+    return(x)
+df_3['cck1'] = df_3['cck'].apply(lambda x: reduce_cck(x))
+def reduce_sxt(x):
+    if x == '后置五摄':
+        x = 5
+    if x == '后置四摄':
+        x = 4
+    if x == '后置三摄':
+        x = 3
+    if x == '后置单摄':
+        x = 1
+    if x == '后置双摄':
+        x = 2
+    if x == '其他':
+        x = 0
+    if x == '':
+        x = 0
+    return float(x)
+df_3['sxt1'] = df_3['sxt'].apply(lambda x: reduce_sxt(x))
+
+def reduce_xs(x):
+    x = re.search(r'\d+',x)
+    if x:
+        x = float(x.group(0))
+        if x<=1:
+            x = x*10000
+    else:
+        x = 0
+    return x
+df_3['hxs1'] = df_3['hxs'].apply(lambda x: reduce_xs(x))
+df_3['qxs1'] = df_3['qxs'].apply(lambda x: reduce_xs(x))
+
+def reduce_pmcc(x):
+    x = re.search(r'\d+.?\d+',x)
+    if x:
+        x = float(x.group(0))
+    else:
+        x = 0
+    return x
+df_3['pmcc1'] = df_3['pmcc'].apply(lambda x: reduce_pmcc(x))
 
 
 
 
+
+plt.plot(df_3['cc1'],jg)
+
+label_encoder = LabelEncoder()
+shop_1 = label_encoder.fit_transform(df_3['shop'])
+print(shop_1)
+#shop_1 = pd.Series(list(shop_1),index = )
+
+#onehot_encoder = OneHotEncoder(sparse=False)
+#shop_1 = shop_1.reshape(len(shop_1), 1)
+#onehot_encoded = onehot_encoder.fit_transform(shop_1)
+#print(onehot_encoded)
+
+
+X = df_3[['cc1','nc1','pmcc1','hxs1','qxs1','sxt1','weight1']]
+y = jg
+X_train, X_test, y_train, y_test = \
+ train_test_split( X, y, test_size=0.33, random_state=42)
+from sklearn import linear_model
+reg = linear_model.LinearRegression()
+reg = reg.fit (X_train,y_train)
+score = reg.score(X_test,y_test)
+print(score)
+
+df_3['shop1'] = shop_1
+
+X = df_3[['shop1','cc1','nc1','pmcc1','hxs1','qxs1','sxt1','weight1']]
+y = jg
+X_train, X_test, y_train, y_test = \
+ train_test_split( X, y, test_size=0.33, random_state=42)
+from sklearn import tree
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(X_train,y_train)
+score = clf.score(X_test,y_test)
+print(score)
+
+X = df_3[['cc1','nc1','pmcc1','hxs1','qxs1','sxt1','weight1']]
+y = jg
+X_train, X_test, y_train, y_test = \
+ train_test_split( X, y, test_size=0.33, random_state=42)
+from sklearn.naive_bayes import GaussianNB
+gnb = GaussianNB()
+gnb = gnb.fit(X_train,y_train)
+score = gnb.score(X_test,y_test)
+print(score)
+
+font=r'C:\Windows\Fonts\simhei.ttf'
+wc = WordCloud(
+        # 设置字体，不指定就会出现乱码
+        font_path=font,
+        # 设置背景色
+        background_color='white',
+        # 设置背景宽
+        width=500,
+        # 设置背景高
+        height=350,
+        # 最大字体
+        max_font_size=50,
+        # 最小字体
+        min_font_size=10,
+        mode='RGBA'
+        #colormap='pink'
+        )
+wc.generate(text)
+plt.figure("jay")
+plt.imshow(wc)
+
+
+
+
+g1 = data.groupby('cj')
+df_4 = g1.agg({'xl':'sum','jg':'mean'})
+df_4['xl'] = df_4['xl']/1000
+df_4 = df_4.sort_values(by = ['xl','jg'])
+df_4.plot(kind = 'bar')
+
+#plt.scatter(df_4['jg'],df_4['xl'],c = df_4['gb'])
+
+
+def reduce_zy(x):
+    x = re.search(r'自营',x)
+    if x:
+        x = 1
+    else:
+        x = 0
+    return x
+data['zy'] = df_1['厂家'].apply(lambda x: reduce_zy(x))
+t = data.groupby('zy').agg({'xl':'sum','jg':'mean'})
+
+
+
+z = data['jg'].value_counts()
+
+
+
+
+t['xl'] = t['xl']/10000
+t.plot(kind = 'bar')
+
+
+
+y_one_hot = preprocessing.label_binarize(y_test, np.arange(46))
+
+
+
+X = df_3[['cc1','nc1','pmcc1','hxs1','qxs1','sxt1','weight1']]
+y = jg
+X_train, X_test, y_train, y_test = \
+ train_test_split( X, y, test_size=0.33, random_state=42)
+ext = ExtraTreesClassifier(
+random_state=100,
+min_samples_split=2,
+min_samples_leaf=2,
+max_depth=5)
+ext.fit(X_train, y_train)
+y_score = ext.predict_proba(X_test)
+fpr, tpr, thresholds = roc_curve(y_one_hot.ravel(), y_score.ravel())
+auc_value = auc(fpr, tpr)
+# print 'when min_samples_split is {0},min_samples_leaf is {1},
+#max_depth is {2},AUC is
+#{3}'.format(min_samples_split,min_samples_leaf,max_depth,auc_value)
+# del y_score, fpr, tpr,auc_value
+print(auc_value)
+
+
+
+importances = clf.feature_importances_ 
 
 #df_2 = nr_1.to_frame()
 #df_2['g5'] = df_2['内容'].apply(lambda x: x[0]) 
